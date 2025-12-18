@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import proyecto.entity.Adminastrador;
+import proyecto.entity.Admin;
 import proyecto.service.AdminService;
 
 @RestController
@@ -25,7 +25,7 @@ public class AdminController {
 
     @GetMapping
     public ResponseEntity<?> findAll() {
-        List<Adminastrador> admins = adminService.findAll();
+        List<Admin> admins = adminService.findAll();
         if (admins.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No hay administradores registrados en el sistema");
         }
@@ -38,7 +38,7 @@ public class AdminController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID de administrador inválido");
         }
         
-        Optional<Adminastrador> oAdmin = adminService.findById(id);
+        Optional<Admin> oAdmin = adminService.findById(id);
         
         if (oAdmin.isPresent()) {
             return ResponseEntity.ok(oAdmin.get());
@@ -48,7 +48,7 @@ public class AdminController {
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody Adminastrador admin) {
+    public ResponseEntity<?> save(@RequestBody Admin admin) {
         try {
             if (admin.getNombre() == null || admin.getNombre().trim().isEmpty()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El nombre del administrador es obligatorio");
@@ -60,7 +60,7 @@ public class AdminController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El correo del administrador es obligatorio");
             }
             
-            Adminastrador savedAdmin = adminService.save(admin);
+            Admin savedAdmin = adminService.save(admin);
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body("Administrador creado correctamente con ID: " + savedAdmin.getId());
                     
@@ -71,13 +71,13 @@ public class AdminController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable int id, @RequestBody Adminastrador admin) {
+    public ResponseEntity<?> update(@PathVariable int id, @RequestBody Admin admin) {
         try {
             if (id <= 0) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID de administrador inválido");
             }
             
-            Adminastrador updatedAdmin = adminService.update(id, admin);
+            Admin updatedAdmin = adminService.update(id, admin);
             if (updatedAdmin == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Administrador con ID " + id + " no encontrado");
             }

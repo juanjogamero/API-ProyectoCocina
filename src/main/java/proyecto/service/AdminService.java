@@ -6,32 +6,31 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import proyecto.entity.Adminastrador;
-import proyecto.respository.AdminastradorRepository;
+import proyecto.entity.Admin;
 
 
 @Service
 public class AdminService {
 
 	@Autowired
-	private AdminastradorRepository adminRepository;
+	private AdminService adminRepository;
 	
-	public Optional<Adminastrador> findById(int id){
+	public Optional<Admin> findById(int id){
 		return this.adminRepository.findById(id);
 	}
 	
-	public List<Adminastrador> findAll(){
+	public List<Admin> findAll(){
 		return this.adminRepository.findAll();
 	}
 	
-	public Adminastrador save(Adminastrador admin) {
+	public Admin save(Admin admin) {
 		return this.adminRepository.save(admin);
 	}
 	
-	public Adminastrador update(int idAdmin, Adminastrador admin) {
-		Optional<Adminastrador> oAdmin = findById(idAdmin);
+	public Admin update(int idAdmin, Admin admin) {
+		Optional<Admin> oAdmin = findById(idAdmin);
 		if (oAdmin.isPresent()) {
-			Adminastrador a = oAdmin.get();
+			Admin a = oAdmin.get();
 			
 			a.setNombre(admin.getNombre());
 			a.setApellido1(admin.getApellido1());
@@ -46,6 +45,8 @@ public class AdminService {
 	}
 	
 	public void delete(int id) {
-		this.adminRepository.deleteById(id);
+		this.adminRepository.delete(id);	
 	}
+
+
 }

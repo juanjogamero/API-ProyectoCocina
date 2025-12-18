@@ -16,6 +16,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.servlet.http.HttpServletRequest;
 import proyecto.entity.Actor;
 import proyecto.service.ActorService;
+import proyecto.service.AdminService;
 
 @Component
 public class JWTUtils {

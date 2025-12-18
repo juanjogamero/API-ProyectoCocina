@@ -126,10 +126,7 @@ public class ChefController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID de chef inválido");
             }
             
-            // Asegúrate que tu servicio tenga el método existsById o similar
-            if (!chefService.existsById(id)) { 
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Chef con ID " + id + " no encontrado");
-            }
+   
             
             chefService.delete(id);
             return ResponseEntity.ok("Chef eliminado correctamente");
@@ -140,21 +137,5 @@ public class ChefController {
         }
     }
     
-    @GetMapping("/exportar/{id}")
-    public ResponseEntity<?> exportarDatos(@PathVariable int id) {
-        try {
-            if (id <= 0) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID de chef inválido");
-            }
-            
-            Map<String, Object> datos = chefService.exportarDatos(id);
-            return ResponseEntity.ok(datos);
-            
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error al exportar datos del chef: " + e.getMessage());
-        }
-    }
+
 }

@@ -3,9 +3,9 @@ package proyecto.entity;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Adminastrador extends Actor{
+public class Admin extends Actor{
 
-	public Adminastrador() {
+	public Admin() {
 		super();
 	}
 

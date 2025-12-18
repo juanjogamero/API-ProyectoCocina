@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import proyecto.entity.Adminastrador;
+import proyecto.entity.Admin;
 import proyecto.entity.Chef;
 import proyecto.entity.Cliente;
-import proyecto.respository.AdminastradorRepository;
+import proyecto.respository.AdminService;
 import proyecto.respository.ChefRepository;
 import proyecto.respository.ClienteRepository;
 

@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -19,7 +20,8 @@ public class Contrato extends DomainEntity {
 	
 	private Integer valoracionCliente;
 	
-	@Many
+	@ManyToOne
+	private Chef chef;
 
 	public Contrato() {
 		super();
