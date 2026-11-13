@@ -434,3 +434,111 @@ main{padding:5px clamp(24px,2.35vw,39px) 42px}
 .summary-add{border:0;border-radius:7px;background:#fff0eb;color:#d66e5a;
   width:29px;height:29px;display:grid;place-items:center;font-size:1.14rem;font-weight:700}
 .summary-add:hover{background:#ee8675;color:#fff}
+
+
+/* Producto a pantalla completa: el coral pertenece a la interfaz,
+   no a un marco publicitario exterior. */
+html,body{width:100%;min-height:100%;background:#fff}
+body{background:#fff}
+.app-stage{
+  min-height:100vh;
+  width:100%;
+  margin:0;
+  padding:0;
+  background:#fff;
+  overflow:visible;
+}
+.app-stage::before,.app-stage::after,
+.presentation-title,.stage-footer{display:none!important}
+.workspace{
+  display:grid;
+  width:100%;
+  max-width:none;
+  min-height:100vh;
+  margin:0;
+  grid-template-columns:225px minmax(0,1fr);
+  border-radius:0;
+  box-shadow:none;
+  overflow:visible;
+}
+.workspace-main{min-width:0;min-height:100vh;background:#fff}
+.sidebar{
+  position:sticky;
+  top:0;
+  height:100vh;
+  align-self:start;
+  overflow-y:auto;
+  border-right:1px solid #eee9ed;
+}
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:15;
+  height:77px;
+  padding:14px clamp(24px,2.5vw,48px);
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid #f0e9eb;
+  backdrop-filter:blur(10px);
+}
+.topbar-heading{font-size:.89rem;color:#797078}
+.topbar-heading strong{color:#302b33;font-weight:800}
+.topbar-heading span{color:#cfc3c7;margin:0 5px}
+main{width:100%;padding:31px clamp(24px,2.5vw,48px) 62px;min-width:0}
+.dashboard-grid{grid-template-columns:minmax(0,1fr) clamp(265px,23%,344px);gap:clamp(22px,2.3vw,38px)}
+.welcome{min-height:245px}
+.welcome-content{padding:30px 30px 36px}
+.welcome h2{font-size:clamp(2rem,2.7vw,2.85rem)}
+.welcome p{font-size:.89rem}
+.chef-grid{gap:15px}
+.chef-visual{height:clamp(150px,11vw,218px)}
+.chef-card-body{padding:13px 8px 6px}
+.chef-card h3{font-size:1.01rem}
+.chef-card-specialty{font-size:.76rem;min-height:35px}
+.chef-card-text{font-size:.76rem;line-height:1.55}
+.chef-price{font-size:1rem}
+.chef-price small{font-size:.66rem}
+.catalog-disclaimer{font-size:.74rem;line-height:1.6}
+.catalog-disclaimer a{color:#ba675a;text-decoration:underline;text-underline-offset:3px}
+.section-heading h2,.right-head h2{font-size:1.4rem}
+.chip{font-size:.85rem}
+.search-field input{font-size:.79rem}
+.summary-row-body strong{font-size:.81rem}
+.booking-card h3{font-size:.95rem}
+.booking-card p{font-size:.76rem}
+@media(max-width:1320px){
+  .workspace{grid-template-columns:205px minmax(0,1fr)}
+  .chef-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .chef-visual{height:clamp(165px,18vw,240px)}
+}
+@media(max-width:1040px){
+  .dashboard-grid{grid-template-columns:1fr}
+  .chef-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .workspace{grid-template-columns:178px minmax(0,1fr)}
+  .chef-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .chef-visual{height:180px}
+}
+@media(max-width:700px){
+  .workspace{display:block;width:100%;min-height:100vh;border-radius:0}
+  .sidebar{height:auto;position:relative;top:auto;overflow:visible;min-height:0}
+  .topbar{position:sticky;top:0;height:62px;padding:10px 18px}
+  main{padding:18px 18px 48px}
+  .welcome{min-height:218px}
+  .welcome-content{padding:23px 18px 29px}
+  .chef-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .chef-visual{height:155px}
+  .chef-card h3{font-size:.92rem}
+  .chef-card-text{font-size:.73rem}
+  .catalog-disclaimer{font-size:.71rem}
+}
+@media(max-width:460px){
+  .topbar{padding:9px 14px}
+  .topbar-heading{font-size:.77rem}
+  main{padding:14px 13px 35px}
+  .welcome h2{font-size:1.8rem}
+  .chef-visual{height:133px}
+  .chef-card-body{padding:10px 4px 4px}
+  .chef-card h3{font-size:.83rem}
+  .chef-card-specialty{font-size:.67rem}
+}
