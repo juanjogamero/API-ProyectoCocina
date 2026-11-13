@@ -301,7 +301,7 @@
       favoritesOnly = false;
       renderChefs();
     }
-    $("[data-nav]").forEach(a => a.classList.toggle("is-active",a.dataset.nav === hash));
+    $$("[data-nav]").forEach(a => a.classList.toggle("is-active",a.dataset.nav === hash));
     const nav = $("#main-nav"); if(nav) nav.classList.remove("is-open");
     const mobile = $("#mobile-menu-button");
     if(mobile) mobile.setAttribute("aria-expanded","false");
