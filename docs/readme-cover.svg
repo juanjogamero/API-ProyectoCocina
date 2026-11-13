@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" role="img" aria-labelledby="t d">
+<title id="t">Proyecto Cocina, descubre chefs y experiencias gastronómicas</title>
+<desc id="d">Portada ilustrativa editorial en color crema y verde oscuro con fotografía geométrica simulada mediante motivos culinarios, nombre de Proyecto Cocina y una ficha de ejemplo.</desc>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5f1e9"/><stop offset="1" stop-color="#e9dfcf"/></linearGradient><linearGradient id="food" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#435c41"/><stop offset="1" stop-color="#193c31"/></linearGradient></defs>
+<rect width="1200" height="430" rx="20" fill="url(#g)"/>
+<rect x="685" y="0" width="515" height="430" rx="20" fill="url(#food)"/>
+<circle cx="941" cy="217" r="173" fill="#f2f0e6"/><circle cx="941" cy="217" r="149" stroke="#d4c9b7" stroke-width="2" fill="none"/>
+<path d="M833 234q-33-70 28-91t101 6q63 17 65 70 4 61-61 73-67 23-110-9-21-21-23-49Z" fill="#afbb8b"/>
+<path d="M859 203q69-33 111 30M862 262q30-41 75-26M919 158q-22 50 8 77" fill="none" stroke="#557c4b" stroke-width="11" stroke-linecap="round"/>
+<circle cx="879" cy="182" r="24" fill="#c76c4c"/><circle cx="1007" cy="262" r="22" fill="#d59058"/><circle cx="916" cy="272" r="15" fill="#c66b4e"/>
+<text x="70" y="83" font-family="Arial,sans-serif" font-weight="800" font-size="23" fill="#253e34" letter-spacing="-1">proyectococina<tspan fill="#b96143">.</tspan></text>
+<text x="70" y="117" font-family="Arial,sans-serif" font-weight="700" font-size="10" letter-spacing="4" fill="#957f6e">CHEFS A DOMICILIO · API REST</text>
+<text x="70" y="200" font-family="Georgia,serif" font-size="61" fill="#24372e">La cocina,</text>
+<text x="70" y="268" font-family="Georgia,serif" font-size="61" font-style="italic" fill="#af6245">a tu manera.</text>
+<text x="70" y="317" font-family="Arial,sans-serif" font-size="16" fill="#617067">Una plataforma para conectar chefs, clientes y experiencias.</text>
+<rect x="70" y="351" rx="6" width="195" height="46" fill="#24483d"/>
+<text x="98" y="379" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#fff">EXPLORAR PROYECTO</text>
+<rect x="740" y="356" rx="5" width="360" height="44" fill="#f8f6ef" opacity=".94"/>
+<text x="765" y="383" font-family="Arial,sans-serif" font-weight="700" font-size="14" fill="#284436">Java · Spring Boot · PostgreSQL · JWT</text>
+</svg>

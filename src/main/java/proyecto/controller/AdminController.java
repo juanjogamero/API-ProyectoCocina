@@ -1,108 +1,44 @@
 package proyecto.controller;
 
-
+import java.net.URI;
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import proyecto.dto.ActorView;
+import proyecto.dto.PerfilRequest;
+import proyecto.dto.RegistroRequest;
 import proyecto.entity.Admin;
 import proyecto.service.AdminService;
 
 @RestController
 @RequestMapping("/admin")
+@PreAuthorize("hasRole('ADMINISTRADOR')")
 public class AdminController {
-
-    @Autowired
-    private AdminService adminService;
+    private final AdminService admins;
+    public AdminController(AdminService admins) { this.admins=admins; }
 
     @GetMapping
-    public ResponseEntity<?> findAll() {
-        List<Admin> admins = adminService.findAll();
-        if (admins.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No hay administradores registrados en el sistema");
-        }
-        return ResponseEntity.ok(admins);
-    }
+    public List<ActorView> findAll() { return admins.findAll().stream().map(ActorView::of).toList(); }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable int id) {
-        if (id <= 0) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID de administrador inválido");
-        }
-        
-        Optional<Admin> oAdmin = adminService.findById(id);
-        
-        if (oAdmin.isPresent()) {
-            return ResponseEntity.ok(oAdmin.get());
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Administrador con ID " + id + " no encontrado");
-        }
-    }
+    public ActorView findById(@PathVariable int id) { return ActorView.of(admins.findById(id)); }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody Admin admin) {
-        try {
-            if (admin.getNombre() == null || admin.getNombre().trim().isEmpty()) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El nombre del administrador es obligatorio");
-            }
-            if (admin.getApellido1() == null || admin.getApellido1().trim().isEmpty()) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El apellido del administrador es obligatorio");
-            }
-            if (admin.getCorreo() == null || admin.getCorreo().trim().isEmpty()) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El correo del administrador es obligatorio");
-            }
-            
-            Admin savedAdmin = adminService.save(admin);
-            return ResponseEntity.status(HttpStatus.CREATED)
-                    .body("Administrador creado correctamente con ID: " + savedAdmin.getId());
-                    
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error al crear el administrador: " + e.getMessage());
-        }
+    public ResponseEntity<ActorView> create(@Valid @RequestBody RegistroRequest request) {
+        Admin admin=admins.create(request);
+        return ResponseEntity.created(URI.create("/admin/"+admin.getId())).body(ActorView.of(admin));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable int id, @RequestBody Admin admin) {
-        try {
-            if (id <= 0) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID de administrador inválido");
-            }
-            
-            Admin updatedAdmin = adminService.update(id, admin);
-            if (updatedAdmin == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Administrador con ID " + id + " no encontrado");
-            }
-            
-            return ResponseEntity.ok("Administrador actualizado correctamente");
-            
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error al actualizar el administrador: " + e.getMessage());
-        }
+    public ActorView update(@PathVariable int id,@Valid @RequestBody PerfilRequest data) {
+        return ActorView.of(admins.update(id,data));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable int id) {
-        try {
-            if (id <= 0) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("ID de administrador inválido");
-
-            }
-            adminService.delete(id);
-            return ResponseEntity.ok("Administrador eliminado correctamente");
-            
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error al eliminar el administrador: " + e.getMessage());
-        }
-    
-}}
+    public ResponseEntity<Void> delete(@PathVariable int id) {
+        admins.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+}

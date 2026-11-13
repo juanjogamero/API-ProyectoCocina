@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f1e9">
+  <meta name="description" content="Proyecto Cocina: una experiencia interactiva para explorar chefs a domicilio y crear reservas de ejemplo. Portfolio Java y Spring Boot.">
+  <title>Proyecto Cocina — Chefs a domicilio</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500,0,0;9..144,600,0,0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 2v5m8-5v5M3 10h18"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+    <symbol id="i-bookmark" viewBox="0 0 24 24"><path d="M5 4h14v17l-7-5-7 5Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M4 3v7c0 2 1.5 3 3 3v8M7 3v10m3-10v7c0 2-1.5 3-3 3M18 21V3c-4 3-4 8 0 12"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h16M4 17h16M9 4v6m6 4v6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.2 6.8 7.3 1-5.3 5.1 1.3 7.2L12 18.5l-6.5 3.6 1.3-7.2L1.5 9.8l7.3-1Z"/></symbol>
+  </svg>
+
+  <div class="utility-bar">
+    <span><span class="utility-pulse"></span> Proyecto académico · Experiencia interactiva</span>
+    <span>Demo de datos locales <span class="utility-separator">/</span> <a href="https://github.com/juanjogamero/API-ProyectoCocina" target="_blank" rel="noopener noreferrer">Ver repositorio <svg class="icon"><use href="#i-arrow"/></svg></a></span>
+  </div>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a href="#inicio" class="brand" aria-label="Proyecto Cocina, inicio">
+        <span class="brand-emblem"><span class="brand-emblem-line"></span><span class="brand-emblem-dot"></span></span>
+        <span class="brand-copy"><strong>proyecto<span>cocina.</span></strong><small>CHEFS A DOMICILIO</small></span>
+      </a>
+      <button class="mobile-menu-button" id="mobile-menu-button" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
+        <a href="#inicio" data-nav="inicio">Inicio</a>
+        <a href="#chefs" data-nav="chefs">Nuestros chefs</a>
+        <a href="#como-funciona" data-nav="como-funciona">Cómo funciona</a>
+        <a href="#reservas" data-nav="reservas">Mis reservas <span id="nav-reservas-count" class="nav-count">0</span></a>
+      </nav>
+      <a class="header-cta" href="#chefs">Explorar chefs <svg class="icon"><use href="#i-arrow"/></svg></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio" aria-labelledby="hero-heading">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> EXPERIENCIAS GASTRONÓMICAS A MEDIDA</div>
+          <h1 id="hero-heading">Los mejores momentos <em>se sirven</em> en casa.</h1>
+          <p>Descubre profesionales de la cocina, explora sus especialidades y organiza una experiencia gastronómica a tu manera.</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#chefs">Descubrir chefs <svg class="icon"><use href="#i-arrow"/></svg></a>
+            <a class="hero-text-link" href="#como-funciona">Así funciona <span>↗</span></a>
+          </div>
+          <div class="hero-proof">
+            <span class="proof-avatars" aria-hidden="true"><span>AM</span><span>CR</span><span>LB</span></span>
+            <span>Del concepto a la experiencia<br><strong>Una plataforma para conectar personas y cocina</strong></span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1400&q=85"
+               alt="Profesional preparando una experiencia gastronómica en una cocina" loading="eager">
+          <div class="hero-image-credit">LA COCINA ES UN LUGAR PARA COMPARTIR</div>
+          <div class="hero-floating-note"><span class="floating-icon"><svg class="icon"><use href="#i-utensils"/></svg></span><span><strong>Tu mesa, tu experiencia</strong><small>Descubre · Elige · Reserva</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="value-strip" aria-label="Características del proyecto">
+      <div class="shell value-inner">
+        <div><strong>01.</strong><span>Chefs especializados</span></div>
+        <div><strong>02.</strong><span>Fechas y disponibilidad</span></div>
+        <div><strong>03.</strong><span>Reservas organizadas</span></div>
+        <div><strong>04.</strong><span>Valoraciones de clientes</span></div>
+      </div>
+    </section>
+
+    <section class="chefs-section section-spacing" id="chefs" aria-labelledby="chefs-heading">
+      <div class="shell">
+        <div class="section-top">
+          <div><span class="section-kicker">/ UNA SELECCIÓN PARA CADA OCASIÓN</span><h2 id="chefs-heading">Encuentra tu próximo <em>chef.</em></h2></div>
+          <p>Desde una cena íntima hasta una celebración especial. Encuentra el estilo de cocina que mejor encaje contigo.</p>
+        </div>
+        <div class="filters-panel">
+          <label class="search-field" for="chef-search"><svg class="icon"><use href="#i-search"/></svg><input type="search" id="chef-search" placeholder="Buscar por nombre o especialidad…" autocomplete="off"></label>
+          <div class="filter-chips" role="group" aria-label="Filtrar por especialidad" id="chef-filters">
+            <button type="button" class="chip is-active" data-filter="Todas" aria-pressed="true">Todas</button>
+            <button type="button" class="chip" data-filter="Mediterránea" aria-pressed="false">Mediterránea</button>
+            <button type="button" class="chip" data-filter="Creativa" aria-pressed="false">Creativa</button>
+            <button type="button" class="chip" data-filter="Vegana" aria-pressed="false">Vegana</button>
+            <button type="button" class="chip" data-filter="Tradicional" aria-pressed="false">Tradicional</button>
+          </div>
+          <span class="filter-count" id="chef-count" aria-live="polite">4 chefs</span>
+        </div>
+        <div class="chef-grid" id="chef-grid" aria-live="polite"></div>
+        <p class="cards-note">Los chefs, tarifas y opiniones mostrados son ficticios y se utilizan únicamente para ilustrar el proyecto.</p>
+      </div>
+    </section>
+
+    <section class="story-section" id="como-funciona" aria-labelledby="story-heading">
+      <div class="shell story-grid">
+        <div class="story-photo">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1200&q=85" alt="Cocina profesional iluminada con utensilios y alimentos">
+          <span class="photo-label">COCINA / PROYECTO ACADÉMICO</span>
+        </div>
+        <div class="story-copy">
+          <span class="section-kicker">/ EL PROCESO</span>
+          <h2 id="story-heading">Una experiencia sencilla, <em>de principio a fin.</em></h2>
+          <div class="story-steps">
+            <div><span>01</span><div><h3>Encuentra un profesional</h3><p>Explora chefs, especialidades, tarifas y valoraciones antes de decidirte.</p></div></div>
+            <div><span>02</span><div><h3>Elige tu fecha</h3><p>Solicita un servicio y comprueba qué fechas tienen disponibilidad.</p></div></div>
+            <div><span>03</span><div><h3>Organiza tu reserva</h3><p>Consulta el estado de tu solicitud y gestiona tus contrataciones.</p></div></div>
+          </div>
+          <a class="underlined-link" href="#chefs">Empezar a explorar <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bookings-section section-spacing" id="reservas" aria-labelledby="bookings-heading">
+      <div class="shell">
+        <div class="section-top booking-heading">
+          <div><span class="section-kicker">/ TU AGENDA</span><h2 id="bookings-heading">Mis <em>reservas.</em></h2></div>
+          <div class="booking-heading-actions"><span class="booking-local-label"><span></span> Guardadas en este navegador</span><button type="button" class="text-action" id="reset-reservations">Restablecer</button></div>
+        </div>
+        <div id="bookings-container" class="bookings-container" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="shell final-cta-inner">
+        <div><span class="section-kicker">/ PROYECTO COCINA</span><h2>Un proyecto de clase.<br><em>Una idea con recorrido.</em></h2><p>Backend desarrollado con Java, Spring Boot y PostgreSQL, acompañado de esta experiencia interactiva independiente.</p></div>
+        <a class="button button-light" href="https://github.com/juanjogamero/API-ProyectoCocina" rel="noopener noreferrer" target="_blank">Explorar el código <svg class="icon"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-inner">
+    <div><span class="footer-wordmark">proyectococina.</span><p>Chefs a domicilio · Proyecto académico colaborativo.</p></div>
+    <div><span>Java 17 · Spring Boot · PostgreSQL · JWT</span><a href="https://github.com/Josemajr6/GestionCocina-Spring" target="_blank" rel="noopener noreferrer">Proyecto de origen ↗</a><a href="https://github.com/juanjogamero/API-ProyectoCocina" target="_blank" rel="noopener noreferrer">Repositorio ↗</a></div>
+    <div class="footer-copyright">© <span id="year">2026</span> Proyecto Cocina<br>Experiencia de demostración</div>
+  </div></footer>
+
+  <dialog id="chef-dialog" class="chef-dialog" aria-labelledby="dialog-title">
+    <button type="button" class="dialog-close" id="dialog-close" aria-label="Cerrar"><svg class="icon"><use href="#i-close"/></svg></button>
+    <div id="chef-dialog-content"></div>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

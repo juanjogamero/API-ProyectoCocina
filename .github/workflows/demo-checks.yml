@@ -1,0 +1,29 @@
+name: Validar demo de Proyecto Cocina
+
+on:
+  push:
+    branches: [main, feature/proyecto-cocina-portfolio]
+    paths:
+      - "docs/**"
+      - "scripts/**"
+      - "README.md"
+      - ".github/workflows/demo-checks.yml"
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verificar sintaxis
+        run: node --check docs/app.js
+      - name: Ejecutar pruebas de la demo
+        run: node scripts/check-demo.mjs

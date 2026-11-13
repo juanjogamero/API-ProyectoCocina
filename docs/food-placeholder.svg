@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 560" role="img" aria-labelledby="t d">
+<title id="t">Imagen culinaria alternativa</title><desc id="d">Ilustración sencilla de un plato de comida para cuando no se puede cargar una fotografía.</desc>
+<rect width="700" height="560" fill="#e6e0d2"/><circle cx="350" cy="280" r="189" fill="#f8f6ee"/><circle cx="350" cy="280" r="160" fill="none" stroke="#d0caba" stroke-width="2"/>
+<path d="M270 340c-62-50-37-124 27-140s111 12 133 74c21 61-39 109-100 101-31-4-48-15-60-35Z" fill="#b6bd8a"/>
+<path d="M281 276c43-34 63-34 93-4m-52 62c26-15 64-5 83-24m-117-31c23 13 31 29 49 31" stroke="#66805f" stroke-width="10" fill="none" stroke-linecap="round"/>
+<circle cx="301" cy="222" r="17" fill="#cc7452"/><circle cx="402" cy="295" r="22" fill="#d18d53"/><circle cx="373" cy="340" r="13" fill="#b65c46"/><circle cx="326" cy="298" r="13" fill="#f4d9a0"/>
+<path d="M158 182v204M142 188v54m16-54v54m16-54v54M142 242q16 20 32 0M546 185q-34 43-26 124h26V185Zm-13 121v80" stroke="#728779" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

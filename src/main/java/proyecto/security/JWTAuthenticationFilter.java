@@ -1,15 +1,13 @@
 package proyecto.security;
 
 import java.io.IOException;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-
+import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,23 +16,27 @@ import proyecto.service.ActorService;
 
 @Component
 public class JWTAuthenticationFilter extends OncePerRequestFilter {
-	@Autowired
-	private ActorService actorService;
-	
-	@Autowired
-	private JWTUtils JWTUtils;
-	
-	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-			throws ServletException, IOException {
-		String token = JWTUtils.getToken(request);
-		if (StringUtils.hasText(token) && JWTUtils.validateToken(token)) {
-			String username = JWTUtils.getUsernameOfToken(token);
-			UserDetails userDetails = actorService.loadUserByUsername(username);
-			UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-					userDetails, null, userDetails.getAuthorities());
-			SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-		}
-		filterChain.doFilter(request, response);
-	}
+    private final ActorService actors;
+    private final JWTUtils jwt;
+    public JWTAuthenticationFilter(ActorService actors, JWTUtils jwt) {
+        this.actors = actors;
+        this.jwt = jwt;
+    }
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+                                     FilterChain chain) throws ServletException, IOException {
+        String token = JWTUtils.getToken(request);
+        if (token != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            try {
+                String username = jwt.getUsernameOfToken(token);
+                UserDetails user = actors.loadUserByUsername(username);
+                SecurityContextHolder.getContext().setAuthentication(
+                    new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities()));
+            } catch (JwtException | IllegalArgumentException | UsernameNotFoundException ex) {
+                SecurityContextHolder.clearContext();
+            }
+        }
+        chain.doFilter(request, response);
+    }
 }
