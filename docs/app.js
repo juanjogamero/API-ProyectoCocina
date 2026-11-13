@@ -303,6 +303,7 @@
     if (hash === "favoritos") {
       favoritesOnly = true;
       renderChefs();
+      $("#chefs")?.scrollIntoView?.({block:"start"});
     } else if (hash === "chefs" && favoritesOnly) {
       favoritesOnly = false;
       renderChefs();
