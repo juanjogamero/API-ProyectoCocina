@@ -101,12 +101,12 @@ const chefsInput=fakeNode("#chef-search");
 chefsInput.value="";
 chefsInput.listeners.input({target:chefsInput});
 assert.match(fakeNode("#chef-grid").innerHTML,/Carlos Ruiz/);
+favButton.listeners.click(); // Volver a mostrar todos los perfiles.
 const sort=fakeNode("#chef-sort");
 sort.listeners.change({target:{value:"price-desc"}});
 const htmlSorted=fakeNode("#chef-grid").innerHTML;
 assert.ok(htmlSorted.indexOf("Carlos Ruiz") < htmlSorted.indexOf("Alba Moreno"),"Ordenación por precio descendente");
-favButton.listeners.click();
-assert.equal(favButton.dataset.doesNotMatter??false,false);
+
 
 
 assert.equal(api.reserve({...example,date:futureDate(10),name:"<img src=x onerror=alert(1)>"}).ok,true);
