@@ -126,48 +126,56 @@
     return isFavorite(key);
   };
   const reset = () => { data = defaultData(); persist(); };
-  let filter = "Todas", search = "", toastTimer = null;
+  let filter = "Todas", search = "", sort = "default", favoritesOnly = false, toastTimer = null;
   const imageMarkup = (chef, cls = "") =>
     '<img src="' + esc(chef.image) + '" alt="Fotografía de una elaboración culinaria de ejemplo" loading="lazy" ' +
     'data-fallback="food-placeholder.svg" class="' + cls + '">';
   const chefCard = chef =>
     '<article class="chef-card">' +
       '<div class="chef-visual">' + imageMarkup(chef) +
-        '<span class="chef-tag">' + esc(chef.category) + '</span>' +
-        '<button type="button" class="card-fav ' + (isFavorite(chef.id) ? "is-favorite" : "") + '" ' +
+        '<span class="chef-image-label">IMAGEN CULINARIA</span></div>' +
+      '<div class="chef-card-body">' +
+        '<div class="chef-card-top"><span class="chef-tag">0' + chef.id + ' / ' + esc(chef.category) + '</span>' +
+          '<button type="button" class="card-fav ' + (isFavorite(chef.id) ? "is-favorite" : "") + '" ' +
           'data-favorite="' + chef.id + '" aria-pressed="' + isFavorite(chef.id) + '" aria-label="' +
           (isFavorite(chef.id) ? "Quitar favorito: " : "Guardar favorito: ") + esc(chef.name) +
-          '" title="Guardar como favorito">' + icon("bookmark") + '</button>' +
-      '</div>' +
-      '<div class="chef-card-body">' +
-        '<div class="chef-card-head"><div><h3>' + esc(chef.name) + '</h3>' +
-          '<p class="chef-card-specialty">' + esc(chef.specialty) + '</p></div>' +
-          '<span class="rating">' + icon("star") + esc(chef.rating) + '</span></div>' +
+          '" title="Guardar como favorito">' + icon("bookmark") + '</button></div>' +
+        '<h3>' + esc(chef.name) + '</h3>' +
+        '<p class="chef-card-specialty">' + esc(chef.specialty) + '</p>' +
         '<p class="chef-card-text">' + esc(chef.description) + '</p>' +
-        '<div class="chef-card-footer"><div class="chef-price">' + formatMoney(chef.price) +
-          '<small>tarifa orientativa / servicio</small></div>' +
-          '<button type="button" class="card-link" data-open="' + chef.id + '">Ver perfil ↗</button></div>' +
-      '</div>' +
-    '</article>';
+        '<div class="chef-card-footer">' +
+          '<div class="chef-price">' + formatMoney(chef.price) +
+            '<small>desde / sesión de ejemplo</small></div>' +
+          '<button type="button" class="card-link" data-open="' + chef.id + '">Ver ficha ↗</button>' +
+        '</div></div></article>';
   function renderChefs() {
     const query = search.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
-    const list = chefs.filter(chef => {
+    let list = chefs.filter(chef => {
       const category = filter === "Todas" || filter === chef.category;
       const full = (chef.name+" "+chef.specialty+" "+chef.category+" "+chef.description)
         .normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
-      return category && full.includes(query);
+      return category && full.includes(query) && (!favoritesOnly || isFavorite(chef.id));
     });
+    if (sort === "price-asc") list = list.slice().sort((a,b) => a.price - b.price);
+    else if (sort === "price-desc") list = list.slice().sort((a,b) => b.price - a.price);
+    else if (sort === "name") list = list.slice().sort((a,b) => a.name.localeCompare(b.name,"es"));
     const grid = $("#chef-grid");
     if (grid) grid.innerHTML = list.length ? list.map(chefCard).join("") :
-      '<div class="empty-result"><strong>No encontramos chefs con esos filtros</strong>' +
-      '<p>Prueba con otra especialidad o modifica tu búsqueda.</p>' +
-      '<button class="card-link" data-clear="true" type="button">Restablecer filtros</button></div>';
+      '<div class="empty-result"><strong>No hay perfiles que coincidan</strong>' +
+      '<p>' + (favoritesOnly ? 'Aún no has guardado chefs en favoritos con estos filtros.' :
+         'Prueba con otra especialidad o modifica tu búsqueda.') + '</p>' +
+      '<button class="card-link" data-clear="true" type="button">Limpiar filtros</button></div>';
     const count = $("#chef-count");
     if (count) count.textContent = list.length + " " + (list.length===1 ? "chef":"chefs");
     $$("[data-filter]").forEach(btn => {
       btn.classList.toggle("is-active",btn.dataset.filter === filter);
       btn.setAttribute("aria-pressed",String(btn.dataset.filter === filter));
     });
+    const favButton = $("#favorite-only");
+    if (favButton) {
+      favButton.classList.toggle("is-active",favoritesOnly);
+      favButton.setAttribute("aria-pressed",String(favoritesOnly));
+    }
   }
   function bookingCard(item) {
     const chef = findChef(item.chefId);
@@ -189,12 +197,19 @@
   function renderReservations() {
     const count = data.reservations.filter(r => r.status !== "cancelada").length;
     const nav = $("#nav-reservas-count"); if(nav) nav.textContent = String(count);
+    const summary = $("#agenda-summary-count");
+    if (summary) summary.textContent = String(count).padStart(2,"0");
+    const summaryText = $("#agenda-summary-description");
+    if (summaryText) summaryText.textContent = count
+      ? (count === 1 ? "Tienes una solicitud de ejemplo activa en tu agenda." :
+        "Tienes " + count + " solicitudes de ejemplo activas en tu agenda.")
+      : "Tu próxima experiencia empieza eligiendo un chef.";
     const container = $("#bookings-container"); if(!container) return;
     if (!data.reservations.length) {
       container.innerHTML = '<div class="bookings-empty">' +
-        '<span>' + icon("calendar") + '</span><h3>Tu agenda empieza aquí</h3>' +
-        '<p>Todavía no tienes reservas de ejemplo. Descubre un chef, elige una fecha y crea tu primera solicitud.</p>' +
-        '<a href="#chefs" class="button button-dark">Descubrir chefs ' + icon("arrow") + '</a>' +
+        '<span>' + icon("calendar") + '</span><h3>Todavía no hay solicitudes</h3>' +
+        '<p>Explora el directorio y crea una solicitud para ver aquí su fecha y estado. Es una simulación local.</p>' +
+        '<a href="#chefs" class="button button-dark">Explorar perfiles ' + icon("arrow") + '</a>' +
         '</div>';
       return;
     }
@@ -215,14 +230,16 @@
     if (!dialog || !content) return;
     content.innerHTML =
       '<div class="dialog-hero">' + imageMarkup(chef) +
-        '<div class="dialog-head"><span class="section-kicker">/ CONOCE A TU CHEF</span>' +
+        '<div class="dialog-head"><span class="section-kicker">PERFIL / 0' + chef.id + ' — ' + esc(chef.category.toUpperCase()) + '</span>' +
           '<h2 id="dialog-title">' + esc(chef.name) + '</h2><p>' + esc(chef.specialty) + '</p>' +
           '<p class="rating">' + icon("star") + esc(chef.rating) + ' · ' +
-          esc(chef.reviews) + ' valoraciones ficticias</p></div></div>' +
+          esc(chef.reviews) + ' opiniones ficticias</p>' +
+          '<div class="dialog-price"><strong>' + formatMoney(chef.price) + '</strong>' +
+          '<small>Tarifa orientativa por servicio · demo</small></div></div></div>' +
       '<div class="dialog-content"><p>' + esc(chef.description) + '</p>' +
         '<div class="dialog-tags">' + chef.styles.map(style => '<span>' + esc(style) + '</span>').join("") + '</div>' +
         '<form id="booking-form" class="booking-form" novalidate>' +
-          '<h3>Crear solicitud de ejemplo</h3>' +
+          '<h3>Planifica tu experiencia</h3>' +
           '<input type="hidden" name="chefId" value="' + chef.id + '">' +
           '<div class="form-field"><label for="booking-date">¿Qué día te gustaría?</label>' +
             '<input type="date" id="booking-date" name="date" required min="' + nextDay() + '"></div>' +
@@ -262,8 +279,9 @@
       notify(saved ? "Chef guardado en favoritos." : "Chef eliminado de favoritos.");
     }
     if (target.dataset.clear) {
-      filter = "Todas"; search = "";
+      filter = "Todas"; search = ""; sort = "default"; favoritesOnly = false;
       const input=$("#chef-search"); if(input) input.value="";
+      const order=$("#chef-sort"); if(order) order.value="default";
       renderChefs();
     }
     if (target.dataset.confirm && changeStatus(target.dataset.confirm,"confirmada")) {
@@ -296,6 +314,16 @@
   $("#chef-search")?.addEventListener("input",event => {
     search=String(event.target.value || "");renderChefs();
   });
+
+  $("#chef-sort")?.addEventListener("change",event => {
+    sort = String(event.target.value || "default");
+    renderChefs();
+  });
+  $("#favorite-only")?.addEventListener("click",() => {
+    favoritesOnly = !favoritesOnly;
+    renderChefs();
+  });
+
   $("#chef-filters")?.addEventListener("click",event => {
     const btn = event.target.closest?.("[data-filter]");
     if(btn) { filter=btn.dataset.filter; renderChefs(); }

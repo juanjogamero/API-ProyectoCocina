@@ -7,14 +7,18 @@ const html = readFileSync(new URL("../docs/index.html", import.meta.url), "utf8"
 const css = readFileSync(new URL("../docs/styles.css", import.meta.url), "utf8");
 const readme = readFileSync(new URL("../README.md", import.meta.url), "utf8");
 
-for (const id of ["chef-grid","chef-search","chef-filters","bookings-container","chef-dialog","toast","nav-reservas-count"]) {
+for (const id of ["chef-grid","chef-search","chef-filters","chef-sort","favorite-only","agenda-summary-count","bookings-container","chef-dialog","toast","nav-reservas-count"]) {
   assert.match(html, new RegExp('id="' + id + '"'), 'Elemento de interfaz ausente: ' + id);
 }
 assert.match(html, /styles\.css/);
 assert.match(html, /app\.js/);
 assert.match(html, /Proyecto Cocina/);
-assert.match(css, /@media\(max-width:560px\)/);
+assert.match(css, /@media\(max-width:640px\)/);
 assert.match(readme, /demostración independiente/);
+assert.match(html, /content-columns/);
+assert.match(html, /DIRECTORIO GASTRONÓMICO/);
+assert.match(css, /grid-template-columns:250px minmax\(0,1fr\)/);
+assert.match(readme, /docs\/readme-cover.svg/);
 assert.match(readme, /Josemajr6\/GestionCocina-Spring/);
 assert.match(readme, /https:\/\/juanjogamero\.github\.io\/API-ProyectoCocina\//);
 
@@ -59,7 +63,7 @@ assert.ok(api,"No se inicializó la aplicación.");
 assert.equal(api.listChefs().length,4);
 assert.match(fakeNode("#chef-grid").innerHTML,/Alba Moreno/);
 assert.match(fakeNode("#chef-grid").innerHTML,/Lucía Benítez/);
-assert.match(fakeNode("#bookings-container").innerHTML,/Tu agenda empieza aquí/);
+assert.match(fakeNode("#bookings-container").innerHTML,/Todavía no hay solicitudes/);
 
 const futureDate = add => {
   const d = new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+add);
@@ -90,6 +94,20 @@ input.value="vegana";
 input.listeners.input({target:input});
 assert.match(fakeNode("#chef-grid").innerHTML,/Lucía Benítez/);
 assert.doesNotMatch(fakeNode("#chef-grid").innerHTML,/Alba Moreno/);
+const favButton=fakeNode("#favorite-only");
+favButton.listeners.click();
+assert.match(fakeNode("#chef-grid").innerHTML, /Aún no has guardado|No hay perfiles/);
+const chefsInput=fakeNode("#chef-search");
+chefsInput.value="";
+chefsInput.listeners.input({target:chefsInput});
+assert.match(fakeNode("#chef-grid").innerHTML,/Carlos Ruiz/);
+favButton.listeners.click(); // Volver a mostrar todos los perfiles.
+const sort=fakeNode("#chef-sort");
+sort.listeners.change({target:{value:"price-desc"}});
+const htmlSorted=fakeNode("#chef-grid").innerHTML;
+assert.ok(htmlSorted.indexOf("Carlos Ruiz") < htmlSorted.indexOf("Alba Moreno"),"Ordenación por precio descendente");
+
+
 
 assert.equal(api.reserve({...example,date:futureDate(10),name:"<img src=x onerror=alert(1)>"}).ok,true);
 const renderEvents=docEvents.get("click");
