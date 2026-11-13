@@ -15,11 +15,13 @@
 
 ### Una experiencia que puedes explorar
 
-La web presenta un panel de cocina inspirado en la referencia visual coral: navegación lateral, banner de bienvenida, categorías con iconos, tarjetas gastronómicas y una agenda lateral. Puedes **buscar por especialidad, ordenar por precio o nombre, guardar favoritos, abrir fichas detalladas y crear solicitudes de reserva de ejemplo** para gestionar su estado desde tu agenda.
+La plataforma ocupa toda la pantalla, con navegación lateral, categorías gastronómicas, fichas de chefs y una agenda integrada. El diseño conserva la identidad coral, sin bordes de maqueta ni marcos decorativos. Puedes **buscar por especialidad, ordenar por precio o nombre, guardar favoritos, abrir fichas detalladas y crear solicitudes de reserva de ejemplo** para gestionar su estado desde tu agenda.
 
 **[Abrir el directorio de Proyecto Cocina](https://juanjogamero.github.io/API-ProyectoCocina/)**
 
-> La web es una **demostración independiente** de la API. Los cuatro chefs, sus precios y valoraciones son ficticios. Los datos de la agenda se guardan solo en tu navegador: no hay pagos ni reservas reales.
+> La interfaz es una **experiencia interactiva independiente** del backend Java. Los cuatro perfiles, sus precios y valoraciones son ficticios. La agenda funciona en el navegador: no procesa pagos ni reservas reales.
+
+Las fotografías de cocina y de los platos proceden de **[Unsplash](https://unsplash.com/)**. Son fotografías reales de banco de imágenes, utilizadas como referencia gastronómica y **no como fotografías de los chefs ficticios**. [Fuentes y licencia](docs/FOTOGRAFIAS.md).
 
 ### El proyecto por dentro
 

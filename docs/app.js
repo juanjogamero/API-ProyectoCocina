@@ -7,28 +7,28 @@
     {
       id: 1, name: "Alba Moreno", category: "Mediterránea", specialty: "Cocina mediterránea de temporada",
       price: 95, rating: "4,9", reviews: 38,
-      image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=85",
+      image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1100&q=82",
       description: "Menús inspirados en los productos de temporada, ingredientes frescos y recetas que reúnen a todos alrededor de la mesa.",
       styles: ["Producto local", "Menús personalizados", "Cena en casa"]
     },
     {
       id: 2, name: "Carlos Ruiz", category: "Creativa", specialty: "Cocina de autor contemporánea",
       price: 145, rating: "4,8", reviews: 26,
-      image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
+      image: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=1100&q=82",
       description: "Una propuesta contemporánea que combina técnica, creatividad y una cuidada presentación de cada plato.",
       styles: ["Alta cocina", "Degustación", "Experiencias"]
     },
     {
       id: 3, name: "Lucía Benítez", category: "Vegana", specialty: "Vegetal, creativa y sostenible",
       price: 80, rating: "4,9", reviews: 31,
-      image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85",
+      image: "https://images.unsplash.com/photo-1546241072-48010ad2862c?auto=format&fit=crop&w=1100&q=82",
       description: "Sabores vegetales llenos de personalidad, con ingredientes de proximidad y opciones adaptadas a cada ocasión.",
       styles: ["Vegetal", "Opciones sin gluten", "Producto fresco"]
     },
     {
       id: 4, name: "Mateo Serrano", category: "Tradicional", specialty: "Recetas clásicas con un toque personal",
       price: 90, rating: "4,8", reviews: 43,
-      image: "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=85",
+      image: "https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=1100&q=82",
       description: "Una cocina cercana que recupera las recetas de siempre, ideal para reuniones familiares y celebraciones.",
       styles: ["Cocina casera", "Celebraciones", "Menús de grupo"]
     }
@@ -128,10 +128,11 @@
   const reset = () => { data = defaultData(); persist(); };
   let filter = "Todas", search = "", sort = "default", favoritesOnly = false, toastTimer = null;
   const imageMarkup = (chef, cls = "") =>
-    '<img src="' + esc(chef.image) + '" alt="Fotografía de una elaboración culinaria de ejemplo" loading="lazy" ' +
+    '<img src="' + esc(chef.image) + '" alt="Fotografía gastronómica de referencia, fuente Unsplash" loading="lazy" decoding="async" ' +
     'data-fallback="food-placeholder.svg" class="' + cls + '">';
 
-  // El catálogo muestra platos ilustrativos, no fotografías de los chefs ficticios.
+  // Las imágenes son fotografías reales de Unsplash usadas como referencia gastronómica.
+  // No representan a las personas ficticias de las fichas.
   const chefCard = chef =>
     '<article class="chef-card">' +
       '<div class="chef-visual">' + imageMarkup(chef) + '</div>' +
