@@ -229,9 +229,15 @@
           (data.reservations.length > 3
             ? '<a class="summary-more" href="#reservas">Ver todas las solicitudes ↗</a>'
             : "")
-        : '<div class="summary-empty"><span class="summary-emoji" aria-hidden="true">🍽️</span>' +
+        : '<div class="summary-empty summary-empty-ideas">' +
           '<strong>Tu agenda está vacía</strong>' +
-          '<p>Explora los chefs, abre una ficha y guarda tu primera solicitud.</p></div>';
+          '<p>Empieza explorando estos chefs:</p>' +
+          chefs.slice(0,3).map(chef => '<div class="summary-suggestion">' + imageMarkup(chef) +
+            '<div class="suggestion-body"><strong>' + esc(chef.name) + '</strong>' +
+            '<small>Desde ' + formatMoney(chef.price) + ' · ' + esc(chef.category) + '</small></div>' +
+            '<button type="button" data-open="' + chef.id + '" class="summary-add" ' +
+            'aria-label="Ver ficha de ' + esc(chef.name) + '">+</button></div>').join("") +
+          '</div>';
     }
     const container = $("#bookings-container"); if(!container) return;
     if (!data.reservations.length) {

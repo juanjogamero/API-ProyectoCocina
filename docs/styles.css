@@ -416,3 +416,21 @@ main{padding:5px clamp(24px,2.35vw,39px) 42px}
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
+
+/* Cuando no hay reservas: accesos a chefs reales de la demo, nunca reservas inventadas. */
+.summary-empty-ideas{
+  border:0;background:transparent;display:block;min-height:0;text-align:left;padding:0
+}
+.summary-empty-ideas>strong{font-size:.83rem;font-weight:850;color:#473b44}
+.summary-empty-ideas>p{font-size:.73rem;color:#a397a0;margin:5px 0 14px;line-height:1.5}
+.summary-suggestion{border:1px solid #f0e9e9;border-radius:10px;
+  display:grid;grid-template-columns:51px minmax(0,1fr) 29px;align-items:center;gap:9px;
+  padding:8px;margin-bottom:9px;background:#fff;min-height:68px
+}
+.summary-suggestion img{width:51px;height:51px;border-radius:7px;object-fit:cover}
+.suggestion-body{min-width:0}
+.suggestion-body strong{display:block;font-size:.75rem;font-weight:850;color:#342d35;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.suggestion-body small{display:block;color:#a2969f;font-size:.66rem;line-height:1.4;margin-top:5px}
+.summary-add{border:0;border-radius:7px;background:#fff0eb;color:#d66e5a;
+  width:29px;height:29px;display:grid;place-items:center;font-size:1.14rem;font-weight:700}
+.summary-add:hover{background:#ee8675;color:#fff}
