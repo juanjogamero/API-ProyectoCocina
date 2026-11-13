@@ -1,72 +1,44 @@
 package proyecto.entity;
 
-import java.sql.Date;
 import java.time.LocalDate;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Contrato extends DomainEntity {
+    @Column(nullable = false)
+    private LocalDate fechaContratacion;
+    @Column(nullable = false)
+    private LocalDate fechaTrabajo;
+    @Column(length = 1000)
+    private String comentario;
+    private Integer valoracionCliente;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EstadoContrato estado = EstadoContrato.PENDIENTE;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "chef_id", nullable = false)
+    private Chef chef;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
 
-	@NotNull
-	private LocalDate fechaContratacion;
-	
-	@NotNull
-	private Date fechaTrabajo;
-	
-	private String comentario;
-	
-	private Integer valoracionCliente;
-	
-	@ManyToOne
-	private Chef chef;
-
-	public Contrato() {
-		super();
-	}
-
-	public Contrato(@NotNull LocalDate fechaContratacion, @NotNull Date fechaTrabajo, String comentario,
-			Integer valoracionCliente) {
-		super();
-		this.fechaContratacion = fechaContratacion;
-		this.fechaTrabajo = fechaTrabajo;
-		this.comentario = comentario;
-		this.valoracionCliente = valoracionCliente;
-	}
-
-	public LocalDate getFechaContratacion() {
-		return fechaContratacion;
-	}
-
-	public void setFechaContratacion(LocalDate fechaContratacion) {
-		this.fechaContratacion = fechaContratacion;
-	}
-
-	public Date getFechaTrabajo() {
-		return fechaTrabajo;
-	}
-
-	public void setFechaTrabajo(Date fechaTrabajo) {
-		this.fechaTrabajo = fechaTrabajo;
-	}
-
-	public String getComentario() {
-		return comentario;
-	}
-
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
-	}
-
-	public Integer getValoracionCliente() {
-		return valoracionCliente;
-	}
-
-	public void setValoracionCliente(Integer valoracionCliente) {
-		this.valoracionCliente = valoracionCliente;
-	}
-	
-	
+    public LocalDate getFechaContratacion() { return fechaContratacion; }
+    public void setFechaContratacion(LocalDate fechaContratacion) { this.fechaContratacion = fechaContratacion; }
+    public LocalDate getFechaTrabajo() { return fechaTrabajo; }
+    public void setFechaTrabajo(LocalDate fechaTrabajo) { this.fechaTrabajo = fechaTrabajo; }
+    public String getComentario() { return comentario; }
+    public void setComentario(String comentario) { this.comentario = comentario; }
+    public Integer getValoracionCliente() { return valoracionCliente; }
+    public void setValoracionCliente(Integer valoracionCliente) { this.valoracionCliente = valoracionCliente; }
+    public EstadoContrato getEstado() { return estado; }
+    public void setEstado(EstadoContrato estado) { this.estado = estado; }
+    public Chef getChef() { return chef; }
+    public void setChef(Chef chef) { this.chef = chef; }
+    public Cliente getCliente() { return cliente; }
+    public void setCliente(Cliente cliente) { this.cliente = cliente; }
 }
