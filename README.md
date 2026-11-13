@@ -5,7 +5,7 @@
 </a>
 
 # Proyecto Cocina
-**Directorio gastronómico · API de contratación de chefs a domicilio**
+**Plataforma gastronómica · Gestión de chefs y contrataciones**
 
 [**Explorar la plataforma**](https://juanjogamero.github.io/API-ProyectoCocina/) · [**Código Java**](src/main/java/proyecto) · [**Documentación técnica**](Documentacion/ARQUITECTURA.md)
 
@@ -15,7 +15,7 @@
 
 ### Una experiencia que puedes explorar
 
-La web muestra un directorio de chefs con un diseño editorial más claro y orientado a la consulta. Puedes **buscar por especialidad, ordenar por precio o nombre, guardar favoritos, abrir fichas detalladas y crear solicitudes de reserva de ejemplo** para gestionar su estado desde tu agenda.
+La web presenta un panel de cocina inspirado en la referencia visual coral: navegación lateral, banner de bienvenida, categorías con iconos, tarjetas gastronómicas y una agenda lateral. Puedes **buscar por especialidad, ordenar por precio o nombre, guardar favoritos, abrir fichas detalladas y crear solicitudes de reserva de ejemplo** para gestionar su estado desde tu agenda.
 
 **[Abrir el directorio de Proyecto Cocina](https://juanjogamero.github.io/API-ProyectoCocina/)**
 
@@ -69,7 +69,7 @@ scripts/                  Pruebas de la interfaz
 
 Este repositorio conserva la procedencia del trabajo de clase realizado con un compañero. Es un **fork de [Josemajr6/GestionCocina-Spring](https://github.com/Josemajr6/GestionCocina-Spring)**, ampliado con mejoras en el backend, documentación y una interfaz de demostración.
 
-**Alcance:** muestra técnica de portfolio, no un marketplace operativo. El backend no está conectado a la web publicada ni gestiona clientes reales.
+**Alcance:** la portada del README es una representación gráfica del diseño; las solicitudes dibujadas en ella son ejemplos. La web es una muestra técnica de portfolio, no un marketplace operativo. El backend no está conectado a la web publicada ni gestiona clientes reales.
 
 ---
 
