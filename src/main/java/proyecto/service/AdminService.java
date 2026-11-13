@@ -1,52 +1,43 @@
 package proyecto.service;
 
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+import proyecto.dto.PerfilRequest;
+import proyecto.dto.RegistroRequest;
 import proyecto.entity.Admin;
-
+import proyecto.entity.Rol;
+import proyecto.respository.AdminRepository;
 
 @Service
 public class AdminService {
+    private final AdminRepository repo;
+    private final ActorService actors;
+    public AdminService(AdminRepository repo, ActorService actors) { this.repo = repo; this.actors = actors; }
 
-	@Autowired
-	private AdminService adminRepository;
-	
-	public Optional<Admin> findById(int id){
-		return this.adminRepository.findById(id);
-	}
-	
-	public List<Admin> findAll(){
-		return this.adminRepository.findAll();
-	}
-	
-	public Admin save(Admin admin) {
-		return this.adminRepository.save(admin);
-	}
-	
-	public Admin update(int idAdmin, Admin admin) {
-		Optional<Admin> oAdmin = findById(idAdmin);
-		if (oAdmin.isPresent()) {
-			Admin a = oAdmin.get();
-			
-			a.setNombre(admin.getNombre());
-			a.setApellido1(admin.getApellido1());
-			a.setApellido2(admin.getApellido2());
-			a.setCorreo(admin.getCorreo());
-			a.setTelefono(admin.getTelefono());
-			
-			return save(a);
-		}
-		
-		return null;
-	}
-	
-	public void delete(int id) {
-		this.adminRepository.delete(id);	
-	}
+    public List<Admin> findAll() { return repo.findAll(); }
 
+    public Admin findById(int id) {
+        return repo.findById(id).orElseThrow(() ->
+            new ResponseStatusException(HttpStatus.NOT_FOUND,"Administrador no encontrado"));
+    }
 
+    public Admin create(RegistroRequest request) {
+        return (Admin) actors.registerAs(request, Rol.ADMINISTRADOR);
+    }
+
+    @Transactional
+    public Admin update(int id, PerfilRequest data) {
+        Admin admin = findById(id);
+        if (data.nombre() != null) admin.setNombre(data.nombre());
+        if (data.apellido1() != null) admin.setApellido1(data.apellido1());
+        if (data.apellido2() != null) admin.setApellido2(data.apellido2());
+        if (data.correo() != null) admin.setCorreo(data.correo());
+        if (data.telefono() != null) admin.setTelefono(data.telefono());
+        return repo.save(admin);
+    }
+
+    public void delete(int id) { repo.delete(findById(id)); }
 }

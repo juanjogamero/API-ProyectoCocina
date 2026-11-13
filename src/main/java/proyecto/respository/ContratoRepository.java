@@ -14,8 +14,12 @@ import proyecto.entity.EstadoContrato;
 public interface ContratoRepository extends JpaRepository<Contrato,Integer> {
     List<Contrato> findByClienteUsernameOrderByFechaTrabajoDesc(String username);
     List<Contrato> findByChefUsernameOrderByFechaTrabajoDesc(String username);
+    boolean existsByChefId(int chefId);
+    boolean existsByClienteId(int clienteId);
     boolean existsByChefIdAndFechaTrabajoAndEstadoIn(int chefId, LocalDate fechaTrabajo,
             Collection<EstadoContrato> estados);
+    @Query("SELECT AVG(c.valoracionCliente) FROM Contrato c WHERE c.chef.id = :chefId AND c.valoracionCliente IS NOT NULL")
+    Double puntuacionMedia(@Param("chefId") int chefId);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT c FROM Contrato c WHERE c.id = :id")
