@@ -95,6 +95,9 @@ assert.equal(api.reserve({...example,date:futureDate(10),name:"<img src=x onerro
 const renderEvents=docEvents.get("click");
 renderEvents({target:{closest:selector=>selector==="[data-open],[data-favorite],[data-clear],[data-confirm],[data-cancel]"?
 {dataset:{favorite:"1"}}:null}});
+// La API de pruebas modifica el estado; la vista se actualiza al activar una acción de UI.
+renderEvents({target:{closest:selector=>selector==="[data-open],[data-favorite],[data-clear],[data-confirm],[data-cancel]"?
+{dataset:{confirm:"3"}}:null}});
 const bookings=fakeNode("#bookings-container").innerHTML;
 assert.ok(bookings.includes("&lt;img src=x onerror=alert(1)&gt;"),"El texto del usuario debe escapar HTML");
 assert.ok(!bookings.includes('name="<img'),"No debe inyectar HTML desde el formulario");
