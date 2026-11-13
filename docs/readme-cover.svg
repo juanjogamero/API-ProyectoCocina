@@ -1,81 +1,103 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="478" viewBox="0 0 1280 478" role="img" aria-labelledby="title description">
-<title id="title">Proyecto Cocina — Directorio de chefs y experiencias gastronómicas</title>
-<desc id="description">Portada editorial sobria con tipografía protagonista y vista conceptual del nuevo directorio de la aplicación.</desc>
-<rect width="1280" height="478" fill="#F8F7F3"/>
-<path d="M0 1H1280" stroke="#263D32" stroke-width="2"/>
-<path d="M0 477H1280" stroke="#D7DED4" stroke-width="1"/>
-<path d="M45 44H1235" stroke="#D8DED6"/>
-<text x="57" y="32" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" letter-spacing="2.0" fill="#53665B">ESTUDIO DE PRODUCTO</text>
-<text x="1225" y="32" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" letter-spacing="1.7" fill="#53665B">PROYECTO · 2026</text>
-<text x="55" y="114" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" letter-spacing="2.4" fill="#A55F44">01 / DIRECTORIO GASTRONÓMICO</text>
-<text x="53" y="216" font-family="Georgia,'Times New Roman',serif" font-size="87" letter-spacing="-4" fill="#202B24">Proyecto</text>
-<text x="53" y="310" font-family="Georgia,'Times New Roman',serif" font-size="92" font-style="italic" letter-spacing="-4" fill="#202B24">Cocina<tspan fill="#A55F44">.</tspan></text>
-<path d="M58 330H467" stroke="#C5D0C5"/>
-<text x="58" y="361" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#405349">Plataforma de chefs a domicilio</text>
-<text x="58" y="387" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#6A7A6E">Perfiles · Especialidades · Contrataciones</text>
-<rect x="58" y="413" width="81" height="27" rx="3" fill="#E9EFE8"/>
-<text x="98" y="431" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#244638">JAVA 17</text>
-<rect x="147" y="413" width="125" height="27" rx="3" fill="#E9EFE8"/>
-<text x="209" y="431" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#244638">SPRING BOOT</text>
-<rect x="280" y="413" width="114" height="27" rx="3" fill="#E9EFE8"/>
-<text x="337" y="431" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#244638">POSTGRESQL</text>
-<!-- UI preview: flat orthogonal geometry, no stock vectors or false screenshots -->
-<rect x="544" y="66" width="677" height="377" rx="5" fill="#FFFFFF" stroke="#D7DED4" stroke-width="1.5"/>
-<rect x="544" y="66" width="159" height="377" rx="5" fill="#FAFAF8"/>
-<rect x="699" y="66" width="4" height="377" fill="#FAFAF8"/>
-<path d="M703 66V443" stroke="#E2E7E0"/>
-<rect x="566" y="88" width="37" height="37" rx="4" fill="#234438"/>
-<text x="584" y="112" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#FFF" font-weight="700">pc.</text>
-<text x="611" y="101" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" fill="#28382E">Proyecto Cocina</text>
-<text x="611" y="116" font-family="Arial,Helvetica,sans-serif" font-size="6.5" font-weight="700" letter-spacing="1" fill="#87978A">DIRECTORIO</text>
-<text x="569" y="165" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="700" letter-spacing="1.2" fill="#8E9E90">EXPLORAR</text>
-<rect x="562" y="183" width="124" height="31" rx="3" fill="#E7F0E8"/>
-<rect x="575" y="194" width="9" height="9" rx="1" fill="#477963"/>
-<text x="593" y="202" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" fill="#294E3A">Inicio</text>
-<rect x="575" y="231" width="9" height="9" rx="1" fill="none" stroke="#789383"/>
-<text x="593" y="239" font-family="Arial,Helvetica,sans-serif" font-size="9.5" fill="#66796D">Directorio</text>
-<rect x="575" y="266" width="9" height="9" rx="1" fill="none" stroke="#789383"/>
-<text x="593" y="274" font-family="Arial,Helvetica,sans-serif" font-size="9.5" fill="#66796D">Mis solicitudes</text>
-<path d="M565 317H681" stroke="#E0E5DD"/>
-<text x="568" y="343" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="700" fill="#617367">PROYECTO / API</text>
-<text x="568" y="369" font-family="Arial,Helvetica,sans-serif" font-size="8.5" fill="#849487">Documentación</text>
-<text x="568" y="391" font-family="Arial,Helvetica,sans-serif" font-size="8.5" fill="#849487">Código fuente</text>
-<!-- main content -->
-<rect x="704" y="66" width="517" height="45" fill="#fff"/>
-<path d="M704 111H1221" stroke="#E7EBE5"/>
-<text x="729" y="94" font-family="Arial,Helvetica,sans-serif" font-size="9" letter-spacing=".65" fill="#5B6F61">PROYECTO COCINA  /  EXPLORADOR</text>
-<rect x="729" y="127" width="466" height="102" fill="#E9ECE4"/>
-<text x="748" y="145" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="700" fill="#986A4F">PLATAFORMA / 01</text>
-<text x="748" y="178" font-family="Georgia,serif" font-size="28" fill="#1F3227">Cocina de autor,</text>
-<text x="748" y="207" font-family="Georgia,serif" font-size="26" font-style="italic" fill="#9A604B">en tu propia mesa.</text>
-<rect x="1052" y="127" width="143" height="102" fill="#314E3D"/>
-<path d="M1086 166c12-20 53-23 67 3 14 23-11 45-34 41-27-2-46-21-33-44Z" fill="#B8C0A2"/>
-<path d="M1095 164q29-9 43 18M1099 199q18-20 38-15" fill="none" stroke="#658061" stroke-width="6" stroke-linecap="round"/>
-<circle cx="1115" cy="160" r="9" fill="#C88E6B"/>
-<text x="729" y="260" font-family="Georgia,serif" font-size="21" fill="#22392C">Encuentra a tu chef.</text>
-<text x="729" y="276" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#74877A">Explora especialidades y organiza tus solicitudes.</text>
-<rect x="729" y="288" width="466" height="28" fill="#FBFCF9" stroke="#D9E0D8"/>
-<circle cx="743" cy="302" r="5" stroke="#67806D" fill="none"/>
-<path d="m747 306 3 3" stroke="#67806D"/>
-<text x="761" y="305" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#859586">Nombre, especialidad o estilo…</text>
-<rect x="729" y="329" width="223" height="94" fill="#FFFFFF" stroke="#E0E6DE"/>
-<rect x="729" y="329" width="77" height="94" fill="#C4B59D"/>
-<circle cx="767" cy="374" r="28" fill="#EFE5D5"/>
-<path d="M752 381q24-31 39-5" stroke="#769274" stroke-width="8" fill="none" stroke-linecap="round"/>
-<circle cx="758" cy="367" r="7" fill="#B96950"/>
-<text x="817" y="347" font-family="Arial,Helvetica,sans-serif" font-size="7" font-weight="700" letter-spacing=".5" fill="#A46549">01 / MEDITERRÁNEA</text>
-<text x="817" y="364" font-family="Arial,Helvetica,sans-serif" font-size="12.5" font-weight="700" fill="#21392A">Alba Moreno</text>
-<text x="817" y="377" font-family="Arial,Helvetica,sans-serif" font-size="8" fill="#768678">Cocina de temporada</text>
-<path d="M817 389H937" stroke="#E5E9E4"/>
-<text x="817" y="410" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#294333">95 €</text>
-<rect x="970" y="329" width="225" height="94" fill="#FFFFFF" stroke="#E0E6DE"/>
-<rect x="970" y="329" width="77" height="94" fill="#AEB9A2"/>
-<circle cx="1008" cy="374" r="28" fill="#E9E5D5"/>
-<path d="M990 375q23-25 40 6" stroke="#466D54" stroke-width="7" fill="none" stroke-linecap="round"/>
-<circle cx="1010" cy="362" r="6" fill="#B47B55"/>
-<text x="1059" y="347" font-family="Arial,Helvetica,sans-serif" font-size="7" font-weight="700" letter-spacing=".5" fill="#A46549">02 / CREATIVA</text>
-<text x="1059" y="364" font-family="Arial,Helvetica,sans-serif" font-size="12.5" font-weight="700" fill="#21392A">Carlos Ruiz</text>
-<text x="1059" y="377" font-family="Arial,Helvetica,sans-serif" font-size="8" fill="#768678">Cocina contemporánea</text>
-<path d="M1059 389H1180" stroke="#E5E9E4"/>
-<text x="1059" y="410" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" fill="#294333">145 €</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="470" viewBox="0 0 1200 470" role="img" aria-labelledby="title desc">
+<title id="title">Proyecto Cocina — panel de chefs y reservas</title>
+<desc id="desc">Vista gráfica del diseño de la plataforma, con fondo coral, menú lateral, tarjeta de bienvenida, catálogo gastronómico y agenda.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f29380"/><stop offset="1" stop-color="#dc7169"/></linearGradient>
+  <linearGradient id="hero" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f2535b"/><stop offset="1" stop-color="#f8a36b"/></linearGradient>
+  <filter id="shadow" x="-15%" y="-15%" width="130%" height="145%"><feDropShadow dx="0" dy="11" stdDeviation="15" flood-color="#a95e57" flood-opacity=".23"/></filter>
+</defs>
+<rect width="1200" height="470" fill="url(#bg)"/>
+<g fill="none" stroke="#fff" stroke-opacity=".17"><path d="M10 0Q220 190 435 0M110 0Q330 190 535 0M680 470Q875 220 1160 470"/></g>
+<text x="600" y="36" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="700" fill="#fff">Tu espacio gastronómico</text>
+<g filter="url(#shadow)">
+  <rect x="45" y="63" width="1110" height="375" rx="17" fill="#fff"/>
+</g>
+<path d="M62 63h166v375H62Q45 438 45 421V80Q45 63 62 63Z" fill="#faf9fa"/>
+<path d="M228 63v375" stroke="#f0edef"/>
+<rect x="115" y="91" width="44" height="44" rx="11" fill="#f6bd9c"/>
+<text x="137" y="121" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#60403d">PC</text>
+<text x="137" y="153" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#29252f">Proyecto Cocina</text>
+<text x="137" y="169" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#9c9199">Tu espacio personal</text>
+<path d="M70 189h133" stroke="#eee9ec"/>
+<text x="70" y="213" font-family="Arial,Helvetica,sans-serif" font-size="9" letter-spacing="1.5" fill="#ae9fa8">MENÚ</text>
+<rect x="67" y="225" width="139" height="35" rx="8" fill="#29252f"/>
+<circle cx="88" cy="242" r="8" fill="#f58b77"/>
+<path d="M83 243l5-5 5 5M84 242v5h8v-5" stroke="#fff" stroke-width="1.2" fill="none"/>
+<text x="104" y="247" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#fff">Inicio</text>
+<text x="82" y="284" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#8c858f">♡  Explorar chefs</text>
+<text x="82" y="319" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#8c858f">♧  Favoritos</text>
+<text x="82" y="354" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#8c858f">▣  Mis reservas</text>
+<path d="M70 371h133" stroke="#eee9ec"/>
+<text x="80" y="391" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#ac9faa">DEMO INTERACTIVA</text>
+<text x="80" y="407" font-family="Arial,Helvetica,sans-serif" font-size="8" fill="#ac9faa">Sin pagos ni reservas reales</text>
+
+<!-- center -->
+<rect x="250" y="84" width="604" height="145" rx="13" fill="url(#hero)"/>
+<circle cx="693" cy="126" r="21" fill="#ffc56e" opacity=".78"/>
+<circle cx="760" cy="212" r="75" fill="#ffc56e" opacity=".62"/>
+<text x="276" y="110" font-family="Arial,Helvetica,sans-serif" font-size="10" fill="#ffeddc" font-weight="700" letter-spacing="1">BIENVENIDO A PROYECTO COCINA</text>
+<text x="276" y="145" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" fill="#fff">El sabor de una</text>
+<text x="276" y="175" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" fill="#fff">experiencia única.</text>
+<text x="276" y="194" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#ffeded">Descubre chefs para cada ocasión especial.</text>
+<rect x="276" y="203" width="105" height="17" rx="3" fill="#fff"/>
+<text x="329" y="215" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="700" fill="#ce6755">Ver chefs →</text>
+<text x="250" y="262" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#28252d">Categorías</text>
+<text x="250" y="289" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#29252f">▤  Todas</text>
+<text x="331" y="289" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#a49ba2">◉  Mediterránea</text>
+<text x="461" y="289" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#a49ba2">♧  Creativa</text>
+<text x="565" y="289" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#a49ba2">✧  Vegana</text>
+<text x="669" y="289" font-family="Arial,Helvetica,sans-serif" font-size="11" fill="#a49ba2">◈  Tradicional</text>
+<path d="M250 303h604" stroke="#ece6e7"/>
+<path d="M250 302h72" stroke="#ed7664" stroke-width="2"/>
+<text x="250" y="328" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#29252f">Chefs recomendados</text>
+<g>
+ <rect x="250" y="342" width="138" height="81" rx="7" fill="#fff" stroke="#f0ebec"/>
+ <rect x="256" y="348" width="126" height="37" rx="5" fill="#f3ded2"/>
+ <circle cx="319" cy="366" r="18" fill="#c79f7d"/><path d="M306 366q13-18 26 0" stroke="#66816a" stroke-width="7" fill="none"/>
+ <text x="258" y="400" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#2b2530">Alba Moreno</text>
+ <text x="258" y="415" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#2b2530">95 €</text>
+ <rect x="360" y="402" width="22" height="17" rx="4" fill="#f08070"/><text x="371" y="415" text-anchor="middle" font-size="15" fill="#fff">+</text>
+</g>
+<g>
+ <rect x="400" y="342" width="138" height="81" rx="7" fill="#fff" stroke="#f0ebec"/>
+ <rect x="406" y="348" width="126" height="37" rx="5" fill="#e2e0c2"/>
+ <circle cx="469" cy="366" r="18" fill="#aec2a0"/><path d="M454 365q12 17 27-3" stroke="#b47b5f" stroke-width="7" fill="none"/>
+ <text x="408" y="400" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#2b2530">Carlos Ruiz</text>
+ <text x="408" y="415" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#2b2530">145 €</text>
+ <rect x="510" y="402" width="22" height="17" rx="4" fill="#efeded"/><text x="521" y="415" text-anchor="middle" font-size="15" fill="#414047">+</text>
+</g>
+<g>
+ <rect x="550" y="342" width="138" height="81" rx="7" fill="#fff" stroke="#f0ebec"/>
+ <rect x="556" y="348" width="126" height="37" rx="5" fill="#c9d6c2"/>
+ <circle cx="619" cy="366" r="18" fill="#e3d8a0"/><path d="M606 367q11-14 24 2" stroke="#557f64" stroke-width="7" fill="none"/>
+ <text x="558" y="400" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#2b2530">Lucía Benítez</text>
+ <text x="558" y="415" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#2b2530">80 €</text>
+ <rect x="660" y="402" width="22" height="17" rx="4" fill="#efeded"/><text x="671" y="415" text-anchor="middle" font-size="15" fill="#414047">+</text>
+</g>
+<g>
+ <rect x="700" y="342" width="154" height="81" rx="7" fill="#fff" stroke="#f0ebec"/>
+ <rect x="706" y="348" width="142" height="37" rx="5" fill="#edc3a6"/>
+ <circle cx="777" cy="366" r="18" fill="#aa6b49"/><path d="M764 366q13-18 25 0" stroke="#dfae73" stroke-width="7" fill="none"/>
+ <text x="708" y="400" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#2b2530">Mateo Serrano</text>
+ <text x="708" y="415" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#2b2530">90 €</text>
+ <rect x="825" y="402" width="22" height="17" rx="4" fill="#efeded"/><text x="836" y="415" text-anchor="middle" font-size="15" fill="#414047">+</text>
+</g>
+<!-- right -->
+<path d="M876 89v329" stroke="#f0ecee"/>
+<text x="898" y="115" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#29252f">Mis reservas</text>
+<text x="898" y="132" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#a39aa1">Solicitudes que has creado en esta demo.</text>
+<rect x="898" y="153" width="232" height="62" rx="8" fill="#fff" stroke="#f0ecec"/>
+<rect x="907" y="162" width="46" height="44" rx="6" fill="#eac5a7"/>
+<text x="965" y="176" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#29252f">Alba Moreno</text>
+<text x="965" y="189" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#968b95">12 dic · Pendiente</text>
+<rect x="898" y="225" width="232" height="62" rx="8" fill="#fff" stroke="#f0ecec"/>
+<rect x="907" y="234" width="46" height="44" rx="6" fill="#d6d9b8"/>
+<text x="965" y="248" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="11" fill="#29252f">Lucía Benítez</text>
+<text x="965" y="261" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#968b95">16 dic · Confirmada</text>
+<path d="M898 314h232" stroke="#eee9e9"/>
+<text x="898" y="336" font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#736971">Solicitudes activas</text>
+<text x="1130" y="339" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="800" fill="#29252f">02</text>
+<rect x="898" y="352" width="232" height="44" rx="8" fill="#ed8372"/>
+<text x="1014" y="379" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#fff">Ver mi agenda →</text>
+<text x="898" y="415" font-family="Arial,Helvetica,sans-serif" font-size="9" fill="#aaa1a9">Interfaz ilustrativa · Reservas ficticias</text>
 </svg>
