@@ -14,7 +14,7 @@ assert.match(html, /styles\.css/);
 assert.match(html, /app\.js/);
 assert.match(html, /Proyecto Cocina/);
 assert.match(css, /@media\(max-width:700px\)/);
-assert.match(readme, /demostración independiente/);
+assert.match(readme, /experiencia interactiva independiente/);
 assert.match(html, /content-columns/);
 assert.match(html, /Mis reservas/);
 assert.match(html, /El sabor de/);
