@@ -130,23 +130,25 @@
   const imageMarkup = (chef, cls = "") =>
     '<img src="' + esc(chef.image) + '" alt="Fotografía de una elaboración culinaria de ejemplo" loading="lazy" ' +
     'data-fallback="food-placeholder.svg" class="' + cls + '">';
+
+  // El catálogo muestra platos ilustrativos, no fotografías de los chefs ficticios.
   const chefCard = chef =>
     '<article class="chef-card">' +
-      '<div class="chef-visual">' + imageMarkup(chef) +
-        '<span class="chef-image-label">IMAGEN CULINARIA</span></div>' +
+      '<div class="chef-visual">' + imageMarkup(chef) + '</div>' +
       '<div class="chef-card-body">' +
-        '<div class="chef-card-top"><span class="chef-tag">0' + chef.id + ' / ' + esc(chef.category) + '</span>' +
-          '<button type="button" class="card-fav ' + (isFavorite(chef.id) ? "is-favorite" : "") + '" ' +
-          'data-favorite="' + chef.id + '" aria-pressed="' + isFavorite(chef.id) + '" aria-label="' +
-          (isFavorite(chef.id) ? "Quitar favorito: " : "Guardar favorito: ") + esc(chef.name) +
-          '" title="Guardar como favorito">' + icon("bookmark") + '</button></div>' +
+        '<div class="chef-card-top"><span class="chef-tag">' + esc(chef.category) + '</span>' +
+        '<button type="button" class="card-fav ' + (isFavorite(chef.id) ? "is-favorite" : "") + '" ' +
+        'data-favorite="' + chef.id + '" aria-pressed="' + isFavorite(chef.id) + '" aria-label="' +
+        (isFavorite(chef.id) ? "Quitar favorito: " : "Guardar favorito: ") + esc(chef.name) +
+        '" title="Guardar como favorito">' + icon("bookmark") + '</button></div>' +
         '<h3>' + esc(chef.name) + '</h3>' +
         '<p class="chef-card-specialty">' + esc(chef.specialty) + '</p>' +
         '<p class="chef-card-text">' + esc(chef.description) + '</p>' +
         '<div class="chef-card-footer">' +
           '<div class="chef-price">' + formatMoney(chef.price) +
-            '<small>desde / sesión de ejemplo</small></div>' +
-          '<button type="button" class="card-link" data-open="' + chef.id + '">Ver ficha ↗</button>' +
+            '<small>desde / sesión</small></div>' +
+          '<button type="button" class="card-link" data-open="' + chef.id + '" ' +
+          'aria-label="Ver perfil y solicitar fecha a ' + esc(chef.name) + '" title="Ver ficha y reservar">+</button>' +
         '</div></div></article>';
   function renderChefs() {
     const query = search.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
@@ -197,6 +199,8 @@
   function renderReservations() {
     const count = data.reservations.filter(r => r.status !== "cancelada").length;
     const nav = $("#nav-reservas-count"); if(nav) nav.textContent = String(count);
+    const notification = $("#header-reservas-count");
+    if (notification) notification.classList.toggle("is-visible",count > 0);
     const summary = $("#agenda-summary-count");
     if (summary) summary.textContent = String(count).padStart(2,"0");
     const summaryText = $("#agenda-summary-description");
@@ -204,6 +208,31 @@
       ? (count === 1 ? "Tienes una solicitud de ejemplo activa en tu agenda." :
         "Tienes " + count + " solicitudes de ejemplo activas en tu agenda.")
       : "Tu próxima experiencia empieza eligiendo un chef.";
+
+    // Panel de reservas de la derecha: refleja el estado real de la simulación.
+    const summaryList = $("#reservation-summary-list");
+    if (summaryList) {
+      const recent = [...data.reservations].reverse().slice(0,3);
+      summaryList.innerHTML = recent.length
+        ? recent.map(item => {
+            const chef = findChef(item.chefId);
+            const state = {
+              pendiente: "Pendiente", confirmada: "Confirmada", cancelada: "Cancelada"
+            }[item.status] || "Pendiente";
+            return '<article class="summary-row">' +
+              imageMarkup(chef) +
+              '<div class="summary-row-body"><strong>' + esc(chef.name) + '</strong>' +
+              '<small>' + esc(formatDate(item.date)) + '</small></div>' +
+              '<span class="summary-row-badge ' + esc(item.status) + '">' + state +
+              '</span></article>';
+          }).join("") +
+          (data.reservations.length > 3
+            ? '<a class="summary-more" href="#reservas">Ver todas las solicitudes ↗</a>'
+            : "")
+        : '<div class="summary-empty"><span class="summary-emoji" aria-hidden="true">🍽️</span>' +
+          '<strong>Tu agenda está vacía</strong>' +
+          '<p>Explora los chefs, abre una ficha y guarda tu primera solicitud.</p></div>';
+    }
     const container = $("#bookings-container"); if(!container) return;
     if (!data.reservations.length) {
       container.innerHTML = '<div class="bookings-empty">' +
@@ -264,7 +293,15 @@
   }
   const navActive = () => {
     const hash = location.hash.replace(/^#/,"") || "inicio";
-    $$("[data-nav]").forEach(a => a.classList.toggle("is-active",a.dataset.nav === hash));
+    // La ruta de favoritos utiliza el mismo directorio y conserva los filtros locales.
+    if (hash === "favoritos") {
+      favoritesOnly = true;
+      renderChefs();
+    } else if (hash === "chefs" && favoritesOnly) {
+      favoritesOnly = false;
+      renderChefs();
+    }
+    $("[data-nav]").forEach(a => a.classList.toggle("is-active",a.dataset.nav === hash));
     const nav = $("#main-nav"); if(nav) nav.classList.remove("is-open");
     const mobile = $("#mobile-menu-button");
     if(mobile) mobile.setAttribute("aria-expanded","false");
@@ -322,6 +359,8 @@
   $("#favorite-only")?.addEventListener("click",() => {
     favoritesOnly = !favoritesOnly;
     renderChefs();
+    if (favoritesOnly && location.hash !== "#favoritos") location.hash = "#favoritos";
+    else if (!favoritesOnly && location.hash === "#favoritos") location.hash = "#chefs";
   });
 
   $("#chef-filters")?.addEventListener("click",event => {
