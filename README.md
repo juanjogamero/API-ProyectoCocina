@@ -113,6 +113,10 @@ Documentacion/    Arquitectura, permisos y flujos
 
 Puedes ejecutar las pruebas del backend con <code>./mvnw test</code>. Las verificaciones de GitHub Actions también incluyen las pruebas de la demo.
 
+## Publicación de la demo
+
+La web está preparada en la carpeta `docs/`. Para habilitar por primera vez su dirección pública, abre **Settings → Pages → Build and deployment** y selecciona **GitHub Actions** como origen. Después entra en **Actions → Publicar Proyecto Cocina en GitHub Pages → Run workflow**. Una vez habilitado, los cambios en `docs/` se publicarán automáticamente.
+
 ## Contexto y autoría
 
 Esta versión de portfolio continúa un **proyecto desarrollado con un compañero de clase**. El repositorio es un **fork** de [Josemajr6/GestionCocina-Spring](https://github.com/Josemajr6/GestionCocina-Spring); se conserva su procedencia y la autoría original. Las mejoras de seguridad, documentación y experiencia web se han añadido sobre esa base.
