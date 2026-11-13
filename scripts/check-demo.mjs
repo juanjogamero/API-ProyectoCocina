@@ -63,7 +63,7 @@ assert.ok(api,"No se inicializó la aplicación.");
 assert.equal(api.listChefs().length,4);
 assert.match(fakeNode("#chef-grid").innerHTML,/Alba Moreno/);
 assert.match(fakeNode("#chef-grid").innerHTML,/Lucía Benítez/);
-assert.match(fakeNode("#bookings-container").innerHTML,/Tu agenda empieza aquí/);
+assert.match(fakeNode("#bookings-container").innerHTML,/Todavía no hay solicitudes/);
 
 const futureDate = add => {
   const d = new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+add);
